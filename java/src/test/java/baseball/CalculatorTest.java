@@ -12,17 +12,15 @@ public class CalculatorTest {
     void calculator_sum() {
         // given
         // 재료 준비
-        int a = 1;
-        int b = 2;
+
 
         Calculator calculator = new Calculator();
 
-//        const a: number = 1;
-//        const b: number = 2;
+
 
         // when
         // 검증하고 싶은 메서드
-        int result = calculator.sum(a, b);
+        int result = calculator.checkBall("321","123", 2);
 
 
 //        describe('calculator', () => {
@@ -34,6 +32,6 @@ public class CalculatorTest {
 
         // then
         // 예상 결과
-        assertThat(result).isEqualTo(3);
+        assertThat(result).isEqualTo(1);
     }
 }
