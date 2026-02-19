@@ -4,6 +4,7 @@ import { parseInput } from './InputValidator/InputValidator';
 import { formatResult, isCorrect, judge } from './Judge/Judge';
 
 
+// refact필요
 function askGuess(rl: readline.Interface): Promise<string> {
     return new Promise((resolve) => {
         rl.question('숫자를 입력해 주세요 : ', resolve);
@@ -26,6 +27,7 @@ function tryParseInput(input: string): number[] | null {
     }
 }
 
+// resolve될 때 Promise<void> 데이터를 반환하지 않는 비동기 함수
 export async function playRound(rl: readline.Interface): Promise<void> {
     const answer = generateRandomNumbers();
     while (true) {
@@ -39,7 +41,7 @@ export async function playRound(rl: readline.Interface): Promise<void> {
 
         if(isCorrect(result)){
             console.log("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-            return;
+            return; // Promise<void> 반환
         }
     }
 }
@@ -49,7 +51,7 @@ export async function run(): Promise<void> {
         input: process.stdin,
         output: process.stdout,
     });
-
+    // refact 필요
     while (true) {
         await playRound(rl);
         const restart = await askRestart(rl);
