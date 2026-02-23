@@ -1,6 +1,6 @@
 package baseball;
 
-public class Calculator {
+public class Umpire {
     public int countStrike(String ranNum, String playNum) {
         int strike = 0;
         for (int i = 0; i < ranNum.length(); i++) {

@@ -14,7 +14,7 @@ public class CalculatorTest {
         // 재료 준비
 
 
-        Calculator calculator = new Calculator();
+        Umpire calculator = new Umpire();
 
 
 
