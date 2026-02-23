@@ -5,4 +5,5 @@ public interface OutputHandler {
     void printInputMessage();
     void printBallStrike(int ball, int strike);
     void printGameClear();
+    void printError(String message);
 }

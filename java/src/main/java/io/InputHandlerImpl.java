@@ -4,30 +4,59 @@ import java.util.Scanner;
 
 public class InputHandlerImpl implements InputHandler {
     private final Scanner scanner = new Scanner(System.in);
+    private final OutputHandler out;
 
+    public InputHandlerImpl(OutputHandler out){
+        this.out = out;
+    }
+
+    @Override
     public int inputHandler(){
         while(true){
-            if(!scanner.hasNextInt()){
-                scanner.next();
-                System.out.println("숫자만 입력해주세요.");
-                continue;
-            }
+            Integer input = readIntOrNull();
 
-            int input = scanner.nextInt();
+            if(input == null) continue;
 
             try{
                 validate(input);
                 return input;
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                out.printError(e.getMessage());
             }
         }
     }
 
-    private void validate(int input) {
+    @Override
+    public int readRestartChoice() {
+        while(true){
+            Integer input = readIntOrNull();
+
+            if(input == null) continue;
+
+            if(input == 1 || input == 2){
+                return input;
+            }
+
+            out.printError("1 또는 2를 입력해주세요.");
+        }
+    }
+
+    private Integer readIntOrNull(){
+        if(!scanner.hasNextInt()){
+            scanner.next();
+            out.printError("숫자만 입력해주세요.");
+            return null;
+        }
+        return scanner.nextInt();
+    }
+
+    private void validate(Integer input) {
+        // 세자리 수 검증
         if(input < 100 || input > 999){
             throw new IllegalArgumentException("세자리 수를 입력해주세요.");
         }
+
+        // 중복된 숫자 있는지 검증
         int a = input / 100;
         int b = (input / 10) % 10;
         int c = input % 10;

@@ -1,19 +1,18 @@
 package baseball;
 
-import io.InputHandlerImpl;
-import io.OutputHandlerImpl;
+import io.InputHandler;
+import io.OutputHandler;
 
 import java.util.Scanner;
 
 public class Game {
     private final Judge judge;
     private final RandomGenerator generator;
-    private final InputHandlerImpl in;
-    private final OutputHandlerImpl out;
-    private final Scanner scanner = new Scanner(System.in);
+    private final InputHandler in;
+    private final OutputHandler out;
 
     public Game(Judge judge, RandomGenerator generator,
-                InputHandlerImpl in, OutputHandlerImpl out){
+                InputHandler in, OutputHandler out){
         this.judge = judge;
         this.generator = generator;
         this.in = in;
@@ -51,7 +50,7 @@ public class Game {
 
     private boolean restart() {
         out.printGameClear();
-        int choice = scanner.nextInt();
+        int choice = in.readRestartChoice();
         return choice == 1;
     }
 
