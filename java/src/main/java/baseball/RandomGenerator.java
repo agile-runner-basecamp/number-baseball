@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-public class RandomGenerator {
+public class RandomGenerator implements Generate{
     public int generate(){
         Random random = new Random();
         Set<Integer> numbers = new HashSet<>();
