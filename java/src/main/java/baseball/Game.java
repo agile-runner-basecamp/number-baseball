@@ -3,11 +3,22 @@ package baseball;
 import io.InputHandlerImpl;
 import io.OutputHandlerImpl;
 
+import java.util.Scanner;
+
 public class Game {
-    private final Judge judge = new Judge();
-    private final RandomGenerator generator = new RandomGenerator();
-    private final InputHandlerImpl in = new InputHandlerImpl();
-    private final OutputHandlerImpl out = new OutputHandlerImpl();
+    private final Judge judge;
+    private final RandomGenerator generator;
+    private final InputHandlerImpl in;
+    private final OutputHandlerImpl out;
+    private final Scanner scanner = new Scanner(System.in);
+
+    public Game(Judge judge, RandomGenerator generator,
+                InputHandlerImpl in, OutputHandlerImpl out){
+        this.judge = judge;
+        this.generator = generator;
+        this.in = in;
+        this.out = out;
+    }
 
     public void start(){
         do {
@@ -40,7 +51,7 @@ public class Game {
 
     private boolean restart() {
         out.printGameClear();
-        int choice = in.inputHandler();
+        int choice = scanner.nextInt();
         return choice == 1;
     }
 
