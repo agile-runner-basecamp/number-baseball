@@ -1,6 +1,10 @@
 package baseball.io;
 
+import java.util.List;
+
 public interface InputHandler {
 
-    String getUserInput();
+    List<Integer> getDigits();
+
+    int getRestartSelection();
 }
